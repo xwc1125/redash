@@ -20,3 +20,9 @@ Cypress.Commands.add('clickThrough', (elements) => {
     .forEach(element => cy.getByTestId(element).click());
   return undefined;
 });
+
+Cypress.Commands.add('percySnap', (name) => {
+  cy.document().then((doc) => {
+    doc.fonts.load('14px FontAwesome').then(() => cy.percySnapshot(name));
+  });
+});

@@ -38,7 +38,7 @@ describe('Edit Profile', () => {
 
   it('renders the page and takes a screenshot', () => {
     cy.getByTestId('Groups').should('contain', 'admin');
-    cy.percySnapshot('User Profile');
+    cy.percySnap('User Profile');
   });
 
   context('changing password', () => {

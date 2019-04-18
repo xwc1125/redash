@@ -10,6 +10,6 @@ describe('Edit Data Source', () => {
       cy.getByTestId('Host').should('have.value', 'postgres');
     });
 
-    cy.percySnapshot('Edit Data Source - PostgreSQL');
+    cy.percySnap('Edit Data Source - PostgreSQL');
   });
 });

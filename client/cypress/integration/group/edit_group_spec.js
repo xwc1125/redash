@@ -10,6 +10,6 @@ describe('Edit Group', () => {
       cy.get('td').should('contain', 'Example Admin');
     });
 
-    cy.percySnapshot('Group');
+    cy.percySnap('Group');
   });
 });

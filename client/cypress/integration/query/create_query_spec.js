@@ -17,6 +17,6 @@ describe('Create Query', () => {
     cy.getByTestId('ExecuteButton').click();
 
     cy.getByTestId('DynamicTable').should('exist');
-    cy.percySnapshot('Edit Query');
+    cy.percySnap('Edit Query');
   });
 });

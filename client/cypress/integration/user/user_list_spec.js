@@ -9,6 +9,6 @@ describe('User List', () => {
       $timeAgo.text('an hour ago');
     });
 
-    cy.percySnapshot('Users');
+    cy.percySnap('Users');
   });
 });

@@ -24,7 +24,7 @@ describe('Embedded Queries', () => {
       cy.logout();
       cy.visit(embedUrl);
       cy.getByTestId('VisualizationEmbed', { timeout: 10000 }).should('exist');
-      cy.percySnapshot('Successfully Embedded Parameterized Query');
+      cy.percySnap('Successfully Embedded Parameterized Query');
     });
   });
 
@@ -48,7 +48,7 @@ describe('Embedded Queries', () => {
       cy.logout();
       cy.visit(embedUrl, { failOnStatusCode: false }); // prevent 403 from failing test
       cy.getByTestId('ErrorMessage', { timeout: 10000 }).should('exist');
-      cy.percySnapshot('Unsuccessfully Embedded Parameterized Query');
+      cy.percySnap('Unsuccessfully Embedded Parameterized Query');
     });
   });
 });

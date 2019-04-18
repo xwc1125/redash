@@ -10,6 +10,6 @@ describe('Group List', () => {
       .and('contain', 'admin')
       .and('contain', 'default');
 
-    cy.percySnapshot('Groups');
+    cy.percySnap('Groups');
   });
 });

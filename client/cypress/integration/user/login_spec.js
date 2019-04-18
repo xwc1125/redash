@@ -7,7 +7,7 @@ describe('Login', () => {
     cy.contains('h3', 'Login to Redash');
 
     cy.wait(1000); // eslint-disable-line cypress/no-unnecessary-waiting
-    cy.percySnapshot('Login');
+    cy.percySnap('Login');
   });
 
   it('shows message on failed login', () => {
@@ -25,6 +25,6 @@ describe('Login', () => {
     cy.contains('Example Admin');
 
     cy.wait(1000); // eslint-disable-line cypress/no-unnecessary-waiting
-    cy.percySnapshot('Homepage');
+    cy.percySnap('Homepage');
   });
 });

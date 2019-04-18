@@ -41,6 +41,7 @@ services:
       PERCY_PULL_REQUEST: ${CIRCLE_PR_NUMBER}
       CYPRESS_PROJECT_ID: ${CYPRESS_PROJECT_ID}
       CYPRESS_RECORD_KEY: ${CYPRESS_RECORD_KEY}
+      LOG_LEVEL: "debug"
   redis:
     image: redis:3.0-alpine
     restart: unless-stopped

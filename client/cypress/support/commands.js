@@ -22,7 +22,10 @@ Cypress.Commands.add('clickThrough', (elements) => {
 });
 
 Cypress.Commands.add('percySnap', (name) => {
-  cy.document().then((doc) => {
-    doc.fonts.load('14px FontAwesome').then(() => cy.percySnapshot(name));
-  });
+  cy.document()
+    .its('fonts')
+    .invoke('check', '14px FontAwesome')
+    .should('eq', true);
+
+  cy.percySnapshot(name);
 });

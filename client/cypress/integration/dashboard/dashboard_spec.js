@@ -304,27 +304,27 @@ describe('Dashboard', () => {
     });
 
     describe('Draggable', () => {
-      describe('Grid snap', () => {
+      describe.only('Grid snap', () => {
         beforeEach(() => {
           editDashboard();
         });
 
         it('stays put when dragged under snap threshold', () => {
-          dragBy(cy.get('@textboxEl'), 90).should(($el) => {
-            expect($el.offset().left).to.eq(15); // no change, 15 -> 15
-          });
+          dragBy(cy.get('@textboxEl'), 90)
+            .invoke('offset')
+            .should('have.property', 'left', 15); // no change, 15 -> 15
         });
 
         it('moves one column when dragged over snap threshold', () => {
-          dragBy(cy.get('@textboxEl'), 110).should(($el) => {
-            expect($el.offset().left).to.eq(215); //  moved by 200, 15 -> 215
-          });
+          dragBy(cy.get('@textboxEl'), 110)
+            .invoke('offset')
+            .should('have.property', 'left', 215); //  moved by 200, 15 -> 215
         });
 
         it('moves two columns when dragged over snap threshold', () => {
-          dragBy(cy.get('@textboxEl'), 330).should(($el) => {
-            expect($el.offset().left).to.eq(415); //  moved by 400, 15 -> 415
-          });
+          dragBy(cy.get('@textboxEl'), 330)
+            .invoke('offset')
+            .should('have.property', 'left', 415); // moved by 400, 15 -> 415
         });
       });
 

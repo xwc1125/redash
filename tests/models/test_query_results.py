@@ -67,24 +67,3 @@ class QueryResultTest(BaseTestCase):
         models.QueryResult.store_result(query.org_id, query.data_source, query.query_hash, query.query_text, "", 0, utcnow())
 
         self.assertEqual(original_updated_at, query.updated_at)
-
-
-data = {
-    "rows": [{"datetime": "2019-05-26T12:39:23.026Z", "bool": True, "date": "2019-05-26"}], 
-    "columns": [
-        {"friendly_name": "bool", "type": "boolean", "name": "bool"}, 
-        {"friendly_name": "date", "type": "datetime", "name": "datetime"},
-        {"friendly_name": "date", "type": "date", "name": "date"}
-    ]
-}
-
-
-class CsvSerializationTest(BaseTestCase):
-    def test_serializes_booleans_correctly(self):
-        query_result = self.factory.create_query_result(data=json_dumps(data))
-        csv_content = query_result.make_csv_content()
-
-        self.assertIn('true', csv_content)
-
-    def test_serializes_datatime_with_correct_format(self):
-        pass

@@ -13,31 +13,12 @@ services:
       - "5678:5678"
     volumes:
       - ".:/app"
-      - ".:/opt/redash/env"
     environment:
       PYTHONUNBUFFERED: 0
       REDASH_LOG_LEVEL: "INFO"
       REDASH_REDIS_URL: "redis://redis:6379/0"
       REDASH_DATABASE_URL: "postgresql://postgres@postgres/postgres"
       REDASH_RATELIMIT_ENABLED: "false"
-      # mail
-      REDASH_MAIL_SERVER: "smtp.exmail.qq.com"
-      REDASH_MAIL_PORT: 465
-      REDASH_MAIL_USE_TLS: "true"
-      REDASH_MAIL_USERNAME: "邮箱"
-      REDASH_MAIL_PASSWORD: "密码"
-      REDASH_MAIL_DEFAULT_SENDER: "默认发送账户"
-      # LDAP
-      REDASH_PASSWORD_LOGIN_ENABLED: "false"
-      REDASH_LDAP_CUSTOM_USERNAME_PROMPT: "LDAP Username"
-      REDASH_LDAP_LOGIN_ENABLED: "true"
-      REDASH_LDAP_URL: "ldaps://172.31.0.1:636"
-      REDASH_LDAP_BIND_DN: "uid=admin,ou=system"
-      REDASH_LDAP_BIND_DN_PASSWORD: "ladp_bind_password"
-      REDASH_LDAP_DISPLAY_NAME_KEY: "uid"
-      REDASH_LDAP_EMAIL_KEY: "mail"
-      REDASH_LDAP_SEARCH_TEMPLATE: "(uid=%(username)s)"
-      REDASH_SEARCH_DN: "ou=users,dc=test,dc=com"
   worker:
     build: .
     command: scheduler
@@ -52,13 +33,6 @@ services:
       REDASH_DATABASE_URL: "postgresql://postgres@postgres/postgres"
       QUEUES: "queries,scheduled_queries,celery,schemas"
       WORKERS_COUNT: 2
-      # mail
-      REDASH_MAIL_SERVER: "smtp.exmail.qq.com"
-      REDASH_MAIL_PORT: 465
-      REDASH_MAIL_USE_TLS: "true"
-      REDASH_MAIL_USERNAME: "邮箱"
-      REDASH_MAIL_PASSWORD: "密码"
-      REDASH_MAIL_DEFAULT_SENDER: "默认发送账户"
   redis:
     image: redis:3-alpine
     volumes: 
